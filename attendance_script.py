@@ -1,17 +1,18 @@
 # This script is used to count attendance points for online synchronous courses.
-#
+
+# This script imports four text files (one for each day my course met)
+# and records whether the student was in attendance each day.
+
 # Instructions: Direct the students to message the word 'here' in the zoom chat. This will
-# ensure that their name shows up in the text file of the chat. This script imports four
-# text files (one for each day my course met), and records whether the student was in 
-# attendance each day. 
-# 
+# ensure that their name shows up in the text file of the chat.
+
 # For my course in particular, students must have attended 3 of 4 weekly class sessions
-# to get full attendance credit. To award these points accordingly, I simply look at the output of this script
+# to get full attendance credit. To award these points accordingly, I simply look at the output of this script.
 
 
 import numpy as np
 
-
+# change each element to a unique name for each student in your course
 name_vec = ['student1','student2','student3']
 
 count_1 = np.zeros((len(name_vec)))
@@ -22,7 +23,7 @@ count_final = np.zeros((len(name_vec)))
 
 
 
-#import attendance records
+# import attendance records
 file1 = open("/home/hunter/attendance_records/monday.txt","r")
 file2 = open("/home/hunter/attendance_records/tuesday.txt","r")
 file3 = open("/home/hunter/attendance_records/wednesday.txt","r")
@@ -33,6 +34,7 @@ readfile3 = file3.read()
 readfile4 = file4.read()
 
 
+# tally whether each student was in attendance on each class day
 for i in range(0,len(name_vec)):
     if name_vec[i] in readfile1: 
         count_1[i] = 1
@@ -49,11 +51,11 @@ for i in range(0,len(name_vec)):
     if name_vec[i] in readfile4: 
         count_4[i] = 1
 
-
+# tally the total number of days each student was in attendance for the given week
 for i in range(0,len(name_vec)):
     count_final[i] = count_1[i] + count_2[i] + count_3[i] + count_4[i]
 
-
+# print output
 for i in range(0,len(name_vec)):
     print(name_vec[i],'attended', int(count_final[i]),'of 4 weekly class sessions')
 
