@@ -1,7 +1,7 @@
 # This script is used to count attendance points for online synchronous courses.
 
 # This script imports four text files (one for each day my course met)
-# and records whether the student was in attendance each day.
+# and records whether each student was in attendance each day.
 
 # Instructions: Direct the students to message the word 'here' in the zoom chat. This will
 # ensure that their name shows up in the text file of the chat.
